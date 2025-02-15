@@ -23,3 +23,26 @@ def pregunta_09():
     39  39  E   5  1998-01-26  1998
 
     """
+
+"""
+import pandas as pd
+
+def pregunta_09():
+    df = pd.read_csv('files/input/tbl0.tsv', sep='\t')
+    df['year'] = pd.to_datetime(df['c3']).dt.year
+    return df
+
+print(pregunta_09())
+
+!!! debido a fecha invalida (29 de feb de un año no bisiesto) este metodo no funciona, ya que solo 
+necesitamos el año, cambio la estrategia""
+"""
+
+import pandas as pd
+
+def pregunta_09():
+    df = pd.read_csv('files/input/tbl0.tsv', sep='\t')
+    df['year'] = df['c3'].str.split('-').str[0]
+    return df
+
+print(pregunta_09())
